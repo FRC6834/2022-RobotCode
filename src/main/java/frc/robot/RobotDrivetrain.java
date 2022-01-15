@@ -25,6 +25,7 @@ public class RobotDrivetrain {
   private CANSparkMax rightFront = new CANSparkMax(2, MotorType.kBrushless);
   private CANSparkMax rightRear = new CANSparkMax(3, MotorType.kBrushless);
   
+  
   //Groups left side speed controllers together and right side speed controllers together
   //This is cleaner than setting up two different differential drives
   private MotorControllerGroup driveLeft = new MotorControllerGroup(leftFront, leftRear);
@@ -56,6 +57,8 @@ public class RobotDrivetrain {
   //zRotation (-1.0 to 1.0) controls direction
   //isQuickTurn (fix me) - needs tested - change to false to remove
   public void curvatureDrive(double xSpeed, double zRotation, boolean isQuickTurn){
+    rightFront.setInverted(true);
+    rightRear.setInverted(true);
     robotDrive.curvatureDrive(xSpeed, zRotation, isQuickTurn);
   }
 
