@@ -114,16 +114,13 @@ public class Robot extends TimedRobot {
     int dPad = controller0.getPOV(); //scans to see which directional arrow is being pushed
     drivetrain.dPadGetter(dPad);
     
-    //Subsystem - Wheel Spin & Lift
-    //Idea is to be able to lift and lower the wheel separate from spinning the wheel
-    //This allows the driver to have the ability to line up the spinner to the wheel before spinning
+    //Subsystem - Climber
     //Lift should stay up until told to lower - should not need to hold down X or Y
     //Spinning works by HOLDING the A or B button
-    boolean wheelLift = controller0.getXButtonPressed(); //Lifts wheel after x is pressed (not held)
-    boolean wheelLower = controller0.getYButtonPressed(); //Lowers wheel after y is pressed
-    boolean spinRight = controller0.getAButton(); //A spins right while held
-    boolean spinLeft = controller0.getBButton(); //B spins left while held
-    sub.wheelSpin(wheelLift, wheelLower, spinRight, spinLeft); //this calls the wheelSpin method in the subsystem class
+    boolean climbLift = controller0.getXButtonPressed(); //Lifts wheel after x is pressed (not held)
+    boolean climbLower = controller0.getYButtonPressed(); //Lowers wheel after y is pressed
+    boolean brake = controller0.getBButtonPressed();
+    sub.climb(climbLift, climbLower, brake); //this calls the wheelSpin method in the subsystem class
   }
 
   /** This function is called once when the robot is disabled. */
