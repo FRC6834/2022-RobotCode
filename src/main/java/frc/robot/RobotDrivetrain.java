@@ -53,6 +53,7 @@ public class RobotDrivetrain {
   }
 
   //Method for curvature drive - used for main drivetrain controls on robot
+  //Right side motor controllers are inverted to ensure that both sides of the bot move in the same direction when desired
   //xSpeed (0 to 1.0) to go forward and (-1.0 to 0) to move backward
   //zRotation (-1.0 to 1.0) controls direction
   //isQuickTurn (fix me) - needs tested - change to false to remove
@@ -86,8 +87,9 @@ public class RobotDrivetrain {
       robotDrive.arcadeDrive(0, -0.5); //left
     }
   }
-  //This method should reset the built in encoders  on th SPARK MAX speed controllers to 0
+  //This method should reset the built-in encoders on the SPARK MAX speed controllers to 0
   //Needs Tested
+  //How can we utilize the encoders? What can they do? - EG 1.15.22
   public void resetEncoders(){
     leftFront.getEncoder().setPosition(0);
     leftRear.getEncoder().setPosition(0);
