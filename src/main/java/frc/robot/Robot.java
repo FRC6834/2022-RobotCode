@@ -117,8 +117,8 @@ public class Robot extends TimedRobot {
     //Subsystem - Climber
     //Lift should stay up until told to lower - should not need to hold down X or Y
     //Spinning works by HOLDING the A or B button
-    boolean climbLift = controller0.getXButtonPressed(); //Lifts wheel after x is pressed (not held)
-    boolean climbLower = controller0.getYButtonPressed(); //Lowers wheel after y is pressed
+    boolean climbLift = controller0.getXButton(); //Lifts wheel after x is pressed (not held)
+    boolean climbLower = controller0.getYButton(); //Lowers wheel after y is pressed
     boolean brake = controller0.getBButtonPressed();
     sub.climb(climbLift, climbLower, brake); //this calls the wheelSpin method in the subsystem class
   }

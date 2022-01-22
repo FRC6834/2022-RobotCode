@@ -31,13 +31,16 @@ public class Subsystem {
     //I'd like to build a fail safe into the brake such as "hold lb and press b" so it isn't hit accidentally
     public void climb(boolean up, boolean down, boolean brake){
         if(up){
-            climbMotor.set(0.5); 
+            climbMotor.set(1); 
         }
         else if(down){
-            climbMotor.set(-0.5);
+            climbMotor.set(-1);
         }
         else if(brake){
             climbMotor.setIdleMode(IdleMode.kBrake);
+        }
+        else{
+            climbMotor.set(0);
         }
     }
 }
