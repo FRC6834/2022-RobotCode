@@ -20,10 +20,10 @@ public class RobotDrivetrain {
   //Orientation assumes killswitch is at front of robot
   //The first parameter refers to the CAN ID - Use Rev Tool to determine CAN IDs
   //MotorType.kBrushless MUST be used when using NEO brushless motors
-  private CANSparkMax leftFront = new CANSparkMax(2, MotorType.kBrushless);
-  private CANSparkMax leftRear = new CANSparkMax(4, MotorType.kBrushless);
+  private CANSparkMax leftFront = new CANSparkMax(1, MotorType.kBrushless);
+  private CANSparkMax leftRear = new CANSparkMax(2, MotorType.kBrushless);
   private CANSparkMax rightFront = new CANSparkMax(3, MotorType.kBrushless);
-  private CANSparkMax rightRear = new CANSparkMax(1, MotorType.kBrushless);
+  private CANSparkMax rightRear = new CANSparkMax(4, MotorType.kBrushless);
   
   
   //Groups left side speed controllers together and right side speed controllers together

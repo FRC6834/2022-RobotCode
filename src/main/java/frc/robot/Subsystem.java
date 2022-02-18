@@ -13,7 +13,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class Subsystem {
     
     //Climber Spin Variables
-    private CANSparkMax climbBrushlessMotor = new CANSparkMax(5, MotorType.kBrushless);
+    //private CANSparkMax climbBrushlessMotor = new CANSparkMax(5, MotorType.kBrushless);
     private Spark climbBrushedMotor = new Spark(1);
     
     //Constructor will be called in Robot.java to create Subsystem object
