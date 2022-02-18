@@ -14,8 +14,13 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 //Subsystem class is general - specific methods for each subsystem
 public class Subsystem {
     
-    //Climber Variables
-    private CANSparkMax climb = new CANSparkMax(5, MotorType.kBrushless);
+    //Class Variables
+    private CANSparkMax climbMotor = new CANSparkMax(5, MotorType.kBrushless);
+    private CANSparkMax everyBotIntakeMotor = new CANSparkMax(6, MotorType.kBrushless);
+    private CANSparkMax everyBotArmMotor = new CANSparkMax(7, MotorType.kBrushless);
+    private CANSparkMax cShooterMotor = new CANSparkMax(8, MotorType.kBrushless);
+    private CANSparkMax cShooterIntakeMotor = new CANSparkMax(8, MotorType.kBrushless);
+
     
     //Constructor will be called in Robot.java to create Subsystem object
     public Subsystem(){}
@@ -33,16 +38,62 @@ public class Subsystem {
     //I'd like to build a fail safe into the brake such as "hold lb and press b" so it isn't hit accidentally
     public void climb(boolean up, boolean down, boolean brake){
         if(up){
-            climb.set(0.75); 
+            climbMotor.set(0.75); 
         }
         else if(down){
-            climb.set(-0.75);
+            climbMotor.set(-0.75);
         }
         else if(brake){
-            climb.setIdleMode(IdleMode.kBrake);
+            climbMotor.setIdleMode(IdleMode.kBrake);
         }
         else{
-            climb.set(0);
+            climbMotor.set(0);
+        }
+    }
+
+    //EveryBot Code
+    //Code for everyBot intake
+    public void everyBotIntake(boolean in, boolean out){
+        if(in){
+            everyBotIntakeMotor.set(0.75);
+        }
+        else if(out){
+            everyBotIntakeMotor.set(-0.75);
+        }
+        else{
+            everyBotIntakeMotor.set(0);
+        }
+    }    
+    //Code for everyBot arm
+    public void everyBotArm(boolean up, boolean down){
+        if(up){
+            everyBotArmMotor.set(0.75);
+        }
+        else if(down){
+            everyBotArmMotor.set(-0.75);
+        }
+        else{
+            everyBotArmMotor.set(0);
+        }
+    }
+
+    //C-Shooter Code
+    //Controls shooter on cShooter Robot
+    public void cShooter(boolean shoot){
+        if(shoot){
+            cShooterMotor.set(1);
+        }
+        else{
+            cShooterMotor.set(0);
+        }
+    }
+    //Controls intake on cShooter Robot
+    public void cShooterIntake(boolean in){
+        if(in){
+            cShooterIntakeMotor.set(1);
+        }
+        else{
+            cShooterIntakeMotor.set(0);
         }
     }
 }
