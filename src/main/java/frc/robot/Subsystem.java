@@ -13,7 +13,8 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class Subsystem {
     
     //Climber Spin Variables
-    private CANSparkMax climbMotor = new CANSparkMax(5, MotorType.kBrushless);
+    private CANSparkMax climbBrushlessMotor = new CANSparkMax(5, MotorType.kBrushless);
+    private Spark climbBrushedMotor = new Spark(1);
     
     //Constructor will be called in Robot.java to create Subsystem object
     public Subsystem(){}
@@ -29,6 +30,8 @@ public class Subsystem {
      *not sure how it works, so we have to do some testing - EG 1.15.22
     */
     //I'd like to build a fail safe into the brake such as "hold lb and press b" so it isn't hit accidentally
+    /*
+    *Idea is to use'brake' feature to keep robot from falling - needs worked on
     public void climb(boolean up, boolean down, boolean brake){
         if(up){
             climbMotor.set(1); 
@@ -41,6 +44,19 @@ public class Subsystem {
         }
         else{
             climbMotor.set(0);
+        }
+    }
+    */
+
+    public void climbBrushed(boolean up, boolean down){
+        if(up){
+            climbBrushedMotor.set(1); 
+        }
+        else if(down){
+            climbBrushedMotor.set(-1);
+        }
+        else{
+            climbBrushedMotor.set(0);
         }
     }
 }
