@@ -1,10 +1,12 @@
 package frc.robot;
 
 //Imports
+/* Not currently using with 2022 build
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+*/
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -12,9 +14,8 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 //Subsystem class is general - specific methods for each subsystem
 public class Subsystem {
     
-    //Climber Spin Variables
-    //private CANSparkMax climbBrushlessMotor = new CANSparkMax(5, MotorType.kBrushless);
-    private Spark climbBrushedMotor = new Spark(1);
+    //Climber Variables
+    private CANSparkMax climb = new CANSparkMax(5, MotorType.kBrushless);
     
     //Constructor will be called in Robot.java to create Subsystem object
     public Subsystem(){}
@@ -30,33 +31,18 @@ public class Subsystem {
      *not sure how it works, so we have to do some testing - EG 1.15.22
     */
     //I'd like to build a fail safe into the brake such as "hold lb and press b" so it isn't hit accidentally
-    /*
-    *Idea is to use'brake' feature to keep robot from falling - needs worked on
     public void climb(boolean up, boolean down, boolean brake){
         if(up){
-            climbMotor.set(1); 
+            climb.set(0.75); 
         }
         else if(down){
-            climbMotor.set(-1);
+            climb.set(-0.75);
         }
         else if(brake){
-            climbMotor.setIdleMode(IdleMode.kBrake);
+            climb.setIdleMode(IdleMode.kBrake);
         }
         else{
-            climbMotor.set(0);
-        }
-    }
-    */
-
-    public void climbBrushed(boolean up, boolean down){
-        if(up){
-            climbBrushedMotor.set(1); 
-        }
-        else if(down){
-            climbBrushedMotor.set(-1);
-        }
-        else{
-            climbBrushedMotor.set(0);
+            climb.set(0);
         }
     }
 }
