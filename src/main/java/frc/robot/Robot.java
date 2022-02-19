@@ -120,7 +120,11 @@ public class Robot extends TimedRobot {
     boolean down = controller0.getYButton(); //Lowers wheel after y is pressed
     boolean brake = controller0.getBButton();
     sub.climb(up, down, brake); //this calls the climb method from the subsystem class
+    sub.cShooter(controller0.getAButton());
+
+    
   }
+  
 
   /** This function is called once when the robot is disabled. */
   @Override
@@ -138,3 +142,6 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {}
 }
+
+
+

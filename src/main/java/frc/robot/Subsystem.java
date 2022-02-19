@@ -15,12 +15,13 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class Subsystem {
     
     //Class Variables
-    private CANSparkMax climbMotor = new CANSparkMax(5, MotorType.kBrushless);
-    private CANSparkMax everyBotIntakeMotor = new CANSparkMax(6, MotorType.kBrushless);
-    private CANSparkMax everyBotArmMotor = new CANSparkMax(7, MotorType.kBrushless);
-    private CANSparkMax cShooterMotor = new CANSparkMax(8, MotorType.kBrushless);
-    private CANSparkMax cShooterIntakeMotor = new CANSparkMax(8, MotorType.kBrushless);
-
+    private CANSparkMax climbMotor = new CANSparkMax(8, MotorType.kBrushless);
+    // Save for future use
+    //private CANSparkMax everyBotIntakeMotor = new CANSparkMax(6, MotorType.kBrushless);
+    //private CANSparkMax everyBotArmMotor = new CANSparkMax(7, MotorType.kBrushless);
+    private CANSparkMax cShooterMotor = new CANSparkMax(5, MotorType.kBrushless);
+    //private CANSparkMax cShooterIntakeMotor = new CANSparkMax(8, MotorType.kBrushless);
+    
     
     //Constructor will be called in Robot.java to create Subsystem object
     public Subsystem(){}
@@ -35,6 +36,7 @@ public class Subsystem {
      *brake will be used to help keep the robot from lower during the end game
      *not sure how it works, so we have to do some testing - EG 1.15.22
     */
+
     //I'd like to build a fail safe into the brake such as "hold lb and press b" so it isn't hit accidentally
     public void climb(boolean up, boolean down, boolean brake){
         if(up){
@@ -51,6 +53,7 @@ public class Subsystem {
         }
     }
 
+    /* Save for future use
     //EveryBot Code
     //Code for everyBot intake
     public void everyBotIntake(boolean in, boolean out){
@@ -76,7 +79,7 @@ public class Subsystem {
             everyBotArmMotor.set(0);
         }
     }
-
+*/
     //C-Shooter Code
     //Controls shooter on cShooter Robot
     public void cShooter(boolean shoot){
@@ -88,7 +91,7 @@ public class Subsystem {
         }
     }
     //Controls intake on cShooter Robot
-    public void cShooterIntake(boolean in){
+    /*public void cShooterIntake(boolean in){
         if(in){
             cShooterIntakeMotor.set(1);
         }
@@ -96,4 +99,5 @@ public class Subsystem {
             cShooterIntakeMotor.set(0);
         }
     }
+    */
 }
