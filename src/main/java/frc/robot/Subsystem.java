@@ -15,11 +15,11 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class Subsystem {
     
     //Class Variables
-    private CANSparkMax climbMotor = new CANSparkMax(8, MotorType.kBrushless);
+    //private CANSparkMax climbMotor = new CANSparkMax(8, MotorType.kBrushless);
     // Save for future use
     //private CANSparkMax everyBotIntakeMotor = new CANSparkMax(6, MotorType.kBrushless);
     //private CANSparkMax everyBotArmMotor = new CANSparkMax(7, MotorType.kBrushless);
-    private CANSparkMax cShooterMotor = new CANSparkMax(5, MotorType.kBrushless);
+    private CANSparkMax cShooterMotor = new CANSparkMax(5, MotorType.kBrushed);
     //private CANSparkMax cShooterIntakeMotor = new CANSparkMax(8, MotorType.kBrushless);
     
     
@@ -38,7 +38,7 @@ public class Subsystem {
     */
 
     //I'd like to build a fail safe into the brake such as "hold lb and press b" so it isn't hit accidentally
-    public void climb(boolean up, boolean down, boolean brake){
+    /*public void climb(boolean up, boolean down, boolean brake){
         if(up){
             climbMotor.set(0.75); 
         }
@@ -51,7 +51,7 @@ public class Subsystem {
         else{
             climbMotor.set(0);
         }
-    }
+    }*/
 
     /* Save for future use
     //EveryBot Code

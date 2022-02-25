@@ -119,7 +119,7 @@ public class Robot extends TimedRobot {
     boolean up = controller0.getXButton(); //Lifts wheel after x is pressed (not held)
     boolean down = controller0.getYButton(); //Lowers wheel after y is pressed
     boolean brake = controller0.getBButton();
-    sub.climb(up, down, brake); //this calls the climb method from the subsystem class
+    //sub.climb(up, down, brake); //this calls the climb method from the subsystem class
     sub.cShooter(controller0.getAButton());
 
     
