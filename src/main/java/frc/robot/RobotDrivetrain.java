@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup; //Replaces Speed
 */
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 
 
 //The goal of this class is to create methods that can be used to operate the robot's drivetrain.
@@ -24,6 +25,8 @@ public class RobotDrivetrain {
   private CANSparkMax leftRear = new CANSparkMax(2, MotorType.kBrushless);
   private CANSparkMax rightFront = new CANSparkMax(3, MotorType.kBrushless);
   private CANSparkMax rightRear = new CANSparkMax(4, MotorType.kBrushless);
+
+
   
   
   //Groups left side speed controllers together and right side speed controllers together
@@ -74,6 +77,8 @@ public class RobotDrivetrain {
   * Setting equal to 0 for left/right ensures it stays in place
   */
   public void dPadGetter(int dPad){
+    rightFront.setInverted(true);
+    rightRear.setInverted(true);
     if (dPad==0){
       robotDrive.arcadeDrive(0.5, 0); //forward
     }

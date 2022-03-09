@@ -17,10 +17,11 @@ public class Subsystem {
     //Class Variables
     //private CANSparkMax climbMotor = new CANSparkMax(8, MotorType.kBrushless);
     // Save for future use
-    //private CANSparkMax everyBotIntakeMotor = new CANSparkMax(6, MotorType.kBrushless);
+    private CANSparkMax everyBotIntakeMotor = new CANSparkMax(6, MotorType.kBrushless);
     //private CANSparkMax everyBotArmMotor = new CANSparkMax(7, MotorType.kBrushless);
     private CANSparkMax cShooterMotor = new CANSparkMax(5, MotorType.kBrushed);
-    //private CANSparkMax cShooterIntakeMotor = new CANSparkMax(8, MotorType.kBrushless);
+    private CANSparkMax cShooterIntakeMotor = new CANSparkMax(8, MotorType.kBrushless);
+    private CANSparkMax liftArm = new CANSparkMax(7, MotorType.kBrushless);
     
     
     //Constructor will be called in Robot.java to create Subsystem object
@@ -82,22 +83,36 @@ public class Subsystem {
 */
     //C-Shooter Code
     //Controls shooter on cShooter Robot
-    public void cShooter(boolean shoot){
+    public void cShooter(boolean shoot, boolean shootSlow){
         if(shoot){
-            cShooterMotor.set(1);
+            cShooterMotor.set(.95);
+        }
+        else if(shootSlow){
+            cShooterMotor.set(.88);
         }
         else{
             cShooterMotor.set(0);
         }
+       
     }
+    
     //Controls intake on cShooter Robot
-    /*public void cShooterIntake(boolean in){
+    public void cShooterIntake(boolean in){
         if(in){
-            cShooterIntakeMotor.set(1);
+            cShooterIntakeMotor.set(-.3);
         }
         else{
             cShooterIntakeMotor.set(0);
         }
     }
-    */
+    public void tempArm(boolean up, boolean down){
+        if(up){
+            liftArm.set(1);
+        }else if(down){
+            liftArm.set(-1);
+        }else{
+            liftArm.set(0);
+        }
+    }
+    
 }
