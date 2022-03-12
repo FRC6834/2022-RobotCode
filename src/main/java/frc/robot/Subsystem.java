@@ -9,10 +9,10 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class Subsystem {
     
     //Class Variables
-    private CANSparkMax climbMotor = new CANSparkMax(6, MotorType.kBrushless);
+    private CANSparkMax climbMotor = new CANSparkMax(7, MotorType.kBrushless);
     private CANSparkMax flyWheel = new CANSparkMax(5, MotorType.kBrushed);
-    private CANSparkMax lowWheel = new CANSparkMax(7, MotorType.kBrushless);
-    private CANSparkMax intake = new CANSparkMax(8, MotorType.kBrushless);
+    private CANSparkMax lowWheel = new CANSparkMax(8, MotorType.kBrushless);
+    //private CANSparkMax intake = new CANSparkMax(8, MotorType.kBrushless);
    
     
     
@@ -70,6 +70,7 @@ public class Subsystem {
     }
     
     //Intake
+    /*
     public void intake(boolean in){
         if(in){
             intake.set(0.5);
@@ -78,4 +79,5 @@ public class Subsystem {
             intake.set(0);
         }
     }
+    */
 }

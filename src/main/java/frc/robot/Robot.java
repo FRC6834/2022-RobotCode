@@ -102,19 +102,18 @@ public class Robot extends TimedRobot {
     double fSpeed = controller0.getRightTriggerAxis(); //forward speed from right trigger
     double rSpeed = controller0.getLeftTriggerAxis(); //reverse speed from left trigger
     double turn = controller0.getLeftX(); //gets the direction from the left analog stick
-    boolean quickTurn = controller0.getLeftBumper(); //makes quick turn if left bumper is pressed
     if (fSpeed > 0){
-      drivetrain.curvatureDrive(fSpeed, turn, quickTurn); // if quickTurn doesn't work, change to false
+      drivetrain.curvatureDrive(fSpeed, turn, false); // if quickTurn doesn't work, change to false
     }
     else if (rSpeed > 0){
-      drivetrain.curvatureDrive(-1*rSpeed, turn, quickTurn);
+      drivetrain.curvatureDrive(-1*rSpeed, turn, false);
     }
         
     int dPad = controller0.getPOV(); //scans to see which directional arrow is being pushed
     drivetrain.dPadGetter(dPad);
     
     //Subsystem - Climber
-    //Lift works by HOLDING the x(up) or y(down) button
+    //Lift works by HOLDING the LB(up) or RB(down) button
     boolean up = controller0.getLeftBumper(); //Lifts wheel after x is pressed (not held)
     boolean down = controller0.getRightBumper(); //Lowers wheel after y is pressed
     boolean brake = controller0.getStartButton();//Engages brake
@@ -129,8 +128,10 @@ public class Robot extends TimedRobot {
     sub.lowWheel(lowWheel);
 
     //Intake
+    /*
     boolean in = controller0.getAButton();
     sub.intake(in);
+    */
   }
   
 
