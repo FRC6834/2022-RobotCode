@@ -15,7 +15,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser; //not sure what thi
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.XboxController; //improved functionality for xbox controller use
 import edu.wpi.first.util.sendable.SendableRegistry; //allows us to add info we select to dashboard
-import edu.wpi.first.wpilibj.Compressor; //Allows us to create Compressor objects
 
 
 public class Robot extends TimedRobot { 
@@ -116,14 +115,22 @@ public class Robot extends TimedRobot {
     
     //Subsystem - Climber
     //Lift works by HOLDING the x(up) or y(down) button
-    boolean up = controller0.getXButton(); //Lifts wheel after x is pressed (not held)
-    boolean down = controller0.getYButton(); //Lowers wheel after y is pressed
-    boolean brake = controller0.getBButton();
-    //sub.climb(up, down, brake); //this calls the climb method from the subsystem class
-    sub.cShooter(controller0.getAButton(), controller0.getYButton());
-    sub.cShooterIntake(controller0.getBButton());
-    sub.tempArm(controller0.getLeftBumper(), controller0.getRightBumper());
-    
+    boolean up = controller0.getLeftBumper(); //Lifts wheel after x is pressed (not held)
+    boolean down = controller0.getRightBumper(); //Lowers wheel after y is pressed
+    boolean brake = controller0.getStartButton();//Engages brake
+    sub.climb(up, down, brake);
+
+    //C-shooter
+    //Consists of top wheel (fly wheel) and lower wheel that feeds balls to top wheel
+    boolean fastFlyWheel = controller0.getXButton();
+    boolean slowFlyWheel = controller0.getYButton();
+    boolean lowWheel = controller0.getBButton();
+    sub.flyWheel(fastFlyWheel, slowFlyWheel);
+    sub.lowWheel(lowWheel);
+
+    //Intake
+    boolean in = controller0.getAButton();
+    sub.intake(in);
   }
   
 

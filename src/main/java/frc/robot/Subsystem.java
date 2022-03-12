@@ -1,12 +1,6 @@
 package frc.robot;
 
 //Imports
-/* Not currently using with 2022 build
-import edu.wpi.first.wpilibj.motorcontrol.Spark;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
-*/
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -15,13 +9,11 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class Subsystem {
     
     //Class Variables
-    //private CANSparkMax climbMotor = new CANSparkMax(8, MotorType.kBrushless);
-    // Save for future use
-    private CANSparkMax everyBotIntakeMotor = new CANSparkMax(6, MotorType.kBrushless);
-    //private CANSparkMax everyBotArmMotor = new CANSparkMax(7, MotorType.kBrushless);
-    private CANSparkMax cShooterMotor = new CANSparkMax(5, MotorType.kBrushed);
-    private CANSparkMax cShooterIntakeMotor = new CANSparkMax(8, MotorType.kBrushless);
-    private CANSparkMax liftArm = new CANSparkMax(7, MotorType.kBrushless);
+    private CANSparkMax climbMotor = new CANSparkMax(6, MotorType.kBrushless);
+    private CANSparkMax flyWheel = new CANSparkMax(5, MotorType.kBrushed);
+    private CANSparkMax lowWheel = new CANSparkMax(7, MotorType.kBrushless);
+    private CANSparkMax intake = new CANSparkMax(8, MotorType.kBrushless);
+   
     
     
     //Constructor will be called in Robot.java to create Subsystem object
@@ -39,7 +31,7 @@ public class Subsystem {
     */
 
     //I'd like to build a fail safe into the brake such as "hold lb and press b" so it isn't hit accidentally
-    /*public void climb(boolean up, boolean down, boolean brake){
+    public void climb(boolean up, boolean down, boolean brake){
         if(up){
             climbMotor.set(0.75); 
         }
@@ -52,67 +44,38 @@ public class Subsystem {
         else{
             climbMotor.set(0);
         }
-    }*/
-
-    /* Save for future use
-    //EveryBot Code
-    //Code for everyBot intake
-    public void everyBotIntake(boolean in, boolean out){
-        if(in){
-            everyBotIntakeMotor.set(0.75);
-        }
-        else if(out){
-            everyBotIntakeMotor.set(-0.75);
-        }
-        else{
-            everyBotIntakeMotor.set(0);
-        }
-    }    
-    //Code for everyBot arm
-    public void everyBotArm(boolean up, boolean down){
-        if(up){
-            everyBotArmMotor.set(0.75);
-        }
-        else if(down){
-            everyBotArmMotor.set(-0.75);
-        }
-        else{
-            everyBotArmMotor.set(0);
-        }
     }
-*/
     //C-Shooter Code
-    //Controls shooter on cShooter Robot
-    public void cShooter(boolean shoot, boolean shootSlow){
+    //Controls top wheel
+    public void flyWheel(boolean shoot, boolean shootSlow){
         if(shoot){
-            cShooterMotor.set(.95);
+            flyWheel.set(.95);
         }
         else if(shootSlow){
-            cShooterMotor.set(.88);
+            flyWheel.set(.88);
         }
         else{
-            cShooterMotor.set(0);
-        }
-       
+            flyWheel.set(0);
+        }       
     }
     
-    //Controls intake on cShooter Robot
-    public void cShooterIntake(boolean in){
+    //Controls low wheel
+    public void lowWheel(boolean feed){
+        if(feed){
+            lowWheel.set(-.3);
+        }
+        else{
+            lowWheel.set(0);
+        }
+    }
+    
+    //Intake
+    public void intake(boolean in){
         if(in){
-            cShooterIntakeMotor.set(-.3);
+            intake.set(0.5);
         }
         else{
-            cShooterIntakeMotor.set(0);
+            intake.set(0);
         }
     }
-    public void tempArm(boolean up, boolean down){
-        if(up){
-            liftArm.set(1);
-        }else if(down){
-            liftArm.set(-1);
-        }else{
-            liftArm.set(0);
-        }
-    }
-    
 }
