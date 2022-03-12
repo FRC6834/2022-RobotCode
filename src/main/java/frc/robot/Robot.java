@@ -36,7 +36,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {    //This method only runs once when the code first starts
     //Sets encoder positions to 0
-    drivetrain.resetEncoders();
+    //drivetrain.resetEncoders();
 
     /*Compressor starts when robot is enabled - may not be needed - EG 1.14.22 
     c.setClosedLoopControl(true); //Should kick on when below max pressure and stop automatically
@@ -121,6 +121,7 @@ public class Robot extends TimedRobot {
     boolean brake = controller0.getBButton();
     //sub.climb(up, down, brake); //this calls the climb method from the subsystem class
     sub.cShooter(controller0.getAButton());
+    sub.cShooterLow(controller0.getBButton());
 
     
   }

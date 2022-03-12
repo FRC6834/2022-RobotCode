@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup; //Replaces Speed
 */
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 
 
 //The goal of this class is to create methods that can be used to operate the robot's drivetrain.
@@ -20,11 +21,16 @@ public class RobotDrivetrain {
   //Orientation assumes killswitch is at front of robot
   //The first parameter refers to the CAN ID - Use Rev Tool to determine CAN IDs
   //MotorType.kBrushless MUST be used when using NEO brushless motors
+  //When using main chasis uncomment this and comment out Victor code -CH
   private CANSparkMax leftFront = new CANSparkMax(1, MotorType.kBrushless);
   private CANSparkMax leftRear = new CANSparkMax(2, MotorType.kBrushless);
   private CANSparkMax rightFront = new CANSparkMax(3, MotorType.kBrushless);
   private CANSparkMax rightRear = new CANSparkMax(4, MotorType.kBrushless);
-  
+
+  /*private PWMVictorSPX leftFrontV = new PWMVictorSPX(1);
+  private PWMVictorSPX leftRearV = new PWMVictorSPX(0);
+  private PWMVictorSPX rightFrontV = new PWMVictorSPX(2);
+  private PWMVictorSPX rightRearV = new PWMVictorSPX(3);  */
   
   //Groups left side speed controllers together and right side speed controllers together
   //This is cleaner than setting up two different differential drives
@@ -90,11 +96,11 @@ public class RobotDrivetrain {
   //This method should reset the built-in encoders on the SPARK MAX speed controllers to 0
   //Needs Tested
   //How can we utilize the encoders? What can they do? - EG 1.15.22
-  public void resetEncoders(){
+  /*public void resetEncoders(){
     leftFront.getEncoder().setPosition(0);
     leftRear.getEncoder().setPosition(0);
     rightFront.getEncoder().setPosition(0);
     rightRear.getEncoder().setPosition(0); 
-  }
+  }*/
 
 }

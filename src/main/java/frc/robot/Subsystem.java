@@ -20,6 +20,7 @@ public class Subsystem {
     //private CANSparkMax everyBotIntakeMotor = new CANSparkMax(6, MotorType.kBrushless);
     //private CANSparkMax everyBotArmMotor = new CANSparkMax(7, MotorType.kBrushless);
     private CANSparkMax cShooterMotor = new CANSparkMax(5, MotorType.kBrushed);
+    private CANSparkMax cShooterMotorLow = new CANSparkMax(8, MotorType.kBrushless);
     //private CANSparkMax cShooterIntakeMotor = new CANSparkMax(8, MotorType.kBrushless);
     
     
@@ -88,6 +89,13 @@ public class Subsystem {
         }
         else{
             cShooterMotor.set(0);
+        }
+    }
+    public void cShooterLow(boolean shoot){
+        if(shoot){
+            cShooterMotorLow.set(-.75);
+        }else{
+            cShooterMotorLow.set(0);
         }
     }
     //Controls intake on cShooter Robot
