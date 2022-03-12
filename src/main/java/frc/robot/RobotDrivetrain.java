@@ -26,11 +26,6 @@ public class RobotDrivetrain {
   private CANSparkMax leftRear = new CANSparkMax(2, MotorType.kBrushless);
   private CANSparkMax rightFront = new CANSparkMax(3, MotorType.kBrushless);
   private CANSparkMax rightRear = new CANSparkMax(4, MotorType.kBrushless);
-
-  /*private PWMVictorSPX leftFrontV = new PWMVictorSPX(1);
-  private PWMVictorSPX leftRearV = new PWMVictorSPX(0);
-  private PWMVictorSPX rightFrontV = new PWMVictorSPX(2);
-  private PWMVictorSPX rightRearV = new PWMVictorSPX(3);  */
   
   //Groups left side speed controllers together and right side speed controllers together
   //This is cleaner than setting up two different differential drives
@@ -80,6 +75,8 @@ public class RobotDrivetrain {
   * Setting equal to 0 for left/right ensures it stays in place
   */
   public void dPadGetter(int dPad){
+    rightFront.setInverted(true);
+    rightRear.setInverted(true);
     if (dPad==0){
       robotDrive.arcadeDrive(0.5, 0); //forward
     }

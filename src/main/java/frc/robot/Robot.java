@@ -15,7 +15,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser; //not sure what thi
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.XboxController; //improved functionality for xbox controller use
 import edu.wpi.first.util.sendable.SendableRegistry; //allows us to add info we select to dashboard
-import edu.wpi.first.wpilibj.Compressor; //Allows us to create Compressor objects
 
 
 public class Robot extends TimedRobot { 
@@ -103,27 +102,34 @@ public class Robot extends TimedRobot {
     double fSpeed = controller0.getRightTriggerAxis(); //forward speed from right trigger
     double rSpeed = controller0.getLeftTriggerAxis(); //reverse speed from left trigger
     double turn = controller0.getLeftX(); //gets the direction from the left analog stick
-    boolean quickTurn = controller0.getLeftBumper(); //makes quick turn if left bumper is pressed
     if (fSpeed > 0){
-      drivetrain.curvatureDrive(fSpeed, turn, quickTurn); // if quickTurn doesn't work, change to false
+      drivetrain.curvatureDrive(fSpeed, turn, false); // if quickTurn doesn't work, change to false
     }
     else if (rSpeed > 0){
-      drivetrain.curvatureDrive(-1*rSpeed, turn, quickTurn);
+      drivetrain.curvatureDrive(-1*rSpeed, turn, false);
     }
         
     int dPad = controller0.getPOV(); //scans to see which directional arrow is being pushed
     drivetrain.dPadGetter(dPad);
     
     //Subsystem - Climber
-    //Lift works by HOLDING the x(up) or y(down) button
-    boolean up = controller0.getXButton(); //Lifts wheel after x is pressed (not held)
-    boolean down = controller0.getYButton(); //Lowers wheel after y is pressed
-    boolean brake = controller0.getBButton();
-    //sub.climb(up, down, brake); //this calls the climb method from the subsystem class
-    sub.cShooter(controller0.getAButton());
-    sub.cShooterLow(controller0.getBButton());
+    //Lift works by HOLDING the LB(up) or RB(down) button
+    boolean up = controller0.getLeftBumper(); //Lifts wheel after x is pressed (not held)
+    boolean down = controller0.getRightBumper(); //Lowers wheel after y is pressed
+    boolean brake = controller0.getStartButton();//Engages brake
+    sub.climb(up, down, brake);
 
-    
+    //C-shooter
+    //Consists of top wheel (fly wheel) and lower wheel that feeds balls to top wheel
+    boolean fastFlyWheel = controller0.getXButton();
+    boolean slowFlyWheel = controller0.getYButton();
+    boolean lowWheel = controller0.getBButton();
+    sub.flyWheel(fastFlyWheel, slowFlyWheel);
+    sub.lowWheel(lowWheel);
+
+    //Intake
+    boolean in = controller0.getAButton();
+    sub.intake(in);
   }
   
 
